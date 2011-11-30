@@ -1,0 +1,191 @@
+// Remixless CSS Grid
+// A simple CSS grid system -- a remix of remixed css grid systems.
+//
+// The elastic grid, the width and margin of columns comes from cssgrid.net.
+// The subcolumn support comes from columnal.com, which comes from 960.gs.
+// The classes organization comes from http://webdesignerwall.com/tutorials/the-simpler-css-grid
+// The LESS function of columns widths comes from http://twitter.github.com/bootstrap/.
+
+.columns {
+
+    @column_gutter_width: 3.8%;
+    @column_width: 4.85%;
+
+    overflow: hidden;
+    
+    .columns(@span: 1) {
+        width: (@column_width * @span) + (@column_gutter_width * (@span - 1));
+    }
+    
+    .bloc {
+        float: left;
+        margin-left: @column_gutter_width;
+        position: relative;
+        
+        &.first {
+            margin-left: 0;
+            clear: left;
+        }
+        
+        &.one {
+            .columns(1);
+        }
+        &.two {
+            .columns(2);
+            
+            @column_gutter_width: 28.62%;
+            @column_width: 35.69%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+            }
+        }
+        &.three {
+            .columns(3);
+            
+            @column_gutter_width: 17.45%;
+            @column_width: 21.7%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+            }
+        }
+        &.four {
+            .columns(4);
+            
+            @column_gutter_width: 12.36%;
+            @column_width: 15.73%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+                &.three { .columns(3); }
+            }
+        }
+        &.five {
+            .columns(5);
+            
+            @column_gutter_width: 9.7%;
+            @column_width: 12.24%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+                &.three { .columns(3); }
+                &.four { .columns(4); }
+            }
+        }
+        &.six {
+            .columns(6);
+            
+            @column_gutter_width: 7.77%;
+            @column_width: 10.19%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+                &.three { .columns(3); }
+                &.four { .columns(4); }
+                &.five { .columns(5); }
+            }
+        }
+        &.seven {
+            .columns(7);
+            
+            @column_gutter_width: 6.56%;
+            @column_width: 8.66%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+                &.three { .columns(3); }
+                &.four { .columns(4); }
+                &.five { .columns(5); }
+                &.six { .columns(6); }
+            }
+        }
+        &.eight {
+            .columns(8);
+            
+            @column_gutter_width: 5.78%;
+            @column_width: 7.44%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+                &.three { .columns(3); }
+                &.four { .columns(4); }
+                &.five { .columns(5); }
+                &.six { .columns(6); }
+                &.seven { .columns(7); }
+            }
+        }
+        &.nine {
+            .columns(9);
+            
+            @column_gutter_width: 5.1%;
+            @column_width: 6.57%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+                &.three { .columns(3); }
+                &.four { .columns(4); }
+                &.five { .columns(5); }
+                &.six { .columns(6); }
+                &.seven { .columns(7); }
+                &.eight { .columns(8); }
+            }
+        }
+        &.ten {
+            .columns(10);
+            
+            @column_gutter_width: 4.61%;
+            @column_width: 5.85%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+                &.three { .columns(3); }
+                &.four { .columns(4); }
+                &.five { .columns(5); }
+                &.six { .columns(6); }
+                &.seven { .columns(7); }
+                &.eight { .columns(8); }
+                &.nine { .columns(9); }
+            }
+        }
+        &.eleven {
+            .columns(11);
+            
+            @column_gutter_width: 4.14%;
+            @column_width: 5.32%;
+            
+            .bloc {
+                margin-left: @column_gutter_width;
+                &.one { .columns(1); }
+                &.two { .columns(2); }
+                &.three { .columns(3); }
+                &.four { .columns(4); }
+                &.five { .columns(5); }
+                &.six { .columns(6); }
+                &.seven { .columns(7); }
+                &.eight { .columns(8); }
+                &.nine { .columns(9); }
+                &.ten { .columns(10); }
+            }
+        }
+        &.twelve {  .columns(12); }
+    }
+}
