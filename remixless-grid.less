@@ -8,184 +8,470 @@
 
 .columns {
 
-    @column_gutter_width: 3.8%;
-    @column_width: 4.85%;
-
+    max-width: 1140px;
+    margin: 0 auto;
     overflow: hidden;
     
-    .columns(@span: 1) {
-        width: (@column_width * @span) + (@column_gutter_width * (@span - 1));
+    @column_width: 4.85%;
+    @column_gutter_width: 3.8%;
+    
+    .columns(@span: 1, @width: @column_width, @gutter_width: @column_gutter_width) {
+        width: (@width * @span) + (@gutter_width * (@span - 1));
     }
     
-    .bloc {
+    .prepend(@span: 1, @width: @column_width, @gutter_width: @column_gutter_width) {
+        margin-left: (@width * @span) + (@gutter_width * (@span+1)) !important;
+        &.first {
+            margin-left: (@width * @span) + (@gutter_width * (@span)) !important;
+        }
+    }
+    
+    .append(@span: 1, @width: @column_width, @gutter_width: @column_gutter_width) {
+        margin-right: (@width * @span) + (@gutter_width * @span);
+    }
+    
+    .blk {
         float: left;
         margin-left: @column_gutter_width;
         position: relative;
+        background: rgba(226, 0, 0, 0.3);
+        
+        -ms-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        
+        .blk {
+            background: red;
+        }
         
         &.first {
-            margin-left: 0;
             clear: left;
+            margin-left: 0 !important;
         }
         
-        &.one {
+        // Columns
+        
+        &.width-1 {
             .columns(1);
         }
-        &.two {
+        &.width-2 {
             .columns(2);
             
-            @column_gutter_width: 28.62%;
-            @column_width: 35.69%;
+            @gutter_width: 28.62%;
+            @width: 35.69%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1 { .columns(1, @width, @gutter_width); }
+                &.width-2 { .columns(2, @width, @gutter_width); }
+                
+                &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                
+                &.append-1 { .append(1, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.three {
+        &.width-3 {
             .columns(3);
             
-            @column_gutter_width: 17.45%;
-            @column_width: 21.7%;
+            @gutter_width: 17.45%;
+            @width: 21.7%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1 { .columns(1, @width, @gutter_width); }
+                &.width-2 { .columns(2, @width, @gutter_width); }
+                &.width-3 { .columns(3, @width, @gutter_width); }
+                
+                &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                
+                &.append-1 { .append(1, @width, @gutter_width); }
+                &.append-2 { .append(2, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.four {
+        &.width-4 {
             .columns(4);
             
-            @column_gutter_width: 12.36%;
-            @column_width: 15.73%;
+            @gutter_width: 12.36%;
+            @width: 15.73%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
-                &.three { .columns(3); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1 { .columns(1, @width, @gutter_width); }
+                &.width-2 { .columns(2, @width, @gutter_width); }
+                &.width-3 { .columns(3, @width, @gutter_width); }
+                &.width-4 { .columns(4, @width, @gutter_width); }
+                
+                &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                
+                &.append-1 { .append(1, @width, @gutter_width); }
+                &.append-2 { .append(2, @width, @gutter_width); }
+                &.append-3 { .append(3, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.five {
+        &.width-5 {
             .columns(5);
             
-            @column_gutter_width: 9.7%;
-            @column_width: 12.24%;
+            @gutter_width: 9.7%;
+            @width: 12.24%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
-                &.three { .columns(3); }
-                &.four { .columns(4); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1 { .columns(1, @width, @gutter_width); }
+                &.width-2 { .columns(2, @width, @gutter_width); }
+                &.width-3 { .columns(3, @width, @gutter_width); }
+                &.width-4 { .columns(4, @width, @gutter_width); }
+                &.width-5 { .columns(5, @width, @gutter_width); }
+                
+                &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                
+                &.append-1 { .append(1, @width, @gutter_width); }
+                &.append-2 { .append(2, @width, @gutter_width); }
+                &.append-3 { .append(3, @width, @gutter_width); }
+                &.append-4 { .append(4, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.six {
+        &.width-6 {
             .columns(6);
             
-            @column_gutter_width: 7.77%;
-            @column_width: 10.19%;
+            @gutter_width: 7.77%;
+            @width: 10.19%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
-                &.three { .columns(3); }
-                &.four { .columns(4); }
-                &.five { .columns(5); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1 { .columns(1, @width, @gutter_width); }
+                &.width-2 { .columns(2, @width, @gutter_width); }
+                &.width-3 { .columns(3, @width, @gutter_width); }
+                &.width-4 { .columns(4, @width, @gutter_width); }
+                &.width-5 { .columns(5, @width, @gutter_width); }
+                &.width-6 { .columns(6, @width, @gutter_width); }
+                
+                &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                
+                &.append-1 { .append(1, @width, @gutter_width); }
+                &.append-2 { .append(2, @width, @gutter_width); }
+                &.append-3 { .append(3, @width, @gutter_width); }
+                &.append-4 { .append(4, @width, @gutter_width); }
+                &.append-5 { .append(5, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.seven {
+        &.width-7 {
             .columns(7);
             
-            @column_gutter_width: 6.56%;
-            @column_width: 8.66%;
+            @gutter_width: 6.56%;
+            @width: 8.66%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
-                &.three { .columns(3); }
-                &.four { .columns(4); }
-                &.five { .columns(5); }
-                &.six { .columns(6); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1 { .columns(1, @width, @gutter_width); }
+                &.width-2 { .columns(2, @width, @gutter_width); }
+                &.width-3 { .columns(3, @width, @gutter_width); }
+                &.width-4 { .columns(4, @width, @gutter_width); }
+                &.width-5 { .columns(5, @width, @gutter_width); }
+                &.width-6 { .columns(6, @width, @gutter_width); }
+                &.width-7 { .columns(7, @width, @gutter_width); }
+                
+                &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                &.prepend-6 { .prepend(6, @width, @gutter_width); }
+                
+                &.append-1 { .append(1, @width, @gutter_width); }
+                &.append-2 { .append(2, @width, @gutter_width); }
+                &.append-3 { .append(3, @width, @gutter_width); }
+                &.append-4 { .append(4, @width, @gutter_width); }
+                &.append-5 { .append(5, @width, @gutter_width); }
+                &.append-6 { .append(6, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.eight {
+        &.width-8 {
             .columns(8);
             
-            @column_gutter_width: 5.78%;
-            @column_width: 7.44%;
+            @gutter_width: 5.78%;
+            @width: 7.44%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
-                &.three { .columns(3); }
-                &.four { .columns(4); }
-                &.five { .columns(5); }
-                &.six { .columns(6); }
-                &.seven { .columns(7); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1 { .columns(1, @width, @gutter_width); }
+                &.width-2 { .columns(2, @width, @gutter_width); }
+                &.width-3 { .columns(3, @width, @gutter_width); }
+                &.width-4 { .columns(4, @width, @gutter_width); }
+                &.width-5 { .columns(5, @width, @gutter_width); }
+                &.width-6 { .columns(6, @width, @gutter_width); }
+                &.width-7 { .columns(7, @width, @gutter_width); }
+                &.width-8 { .columns(8, @width, @gutter_width); }
+                
+                &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                &.prepend-6 { .prepend(6, @width, @gutter_width); }
+                &.prepend-7 { .prepend(7, @width, @gutter_width); }
+                
+                &.append-1 { .append(1, @width, @gutter_width); }
+                &.append-2 { .append(2, @width, @gutter_width); }
+                &.append-3 { .append(3, @width, @gutter_width); }
+                &.append-4 { .append(4, @width, @gutter_width); }
+                &.append-5 { .append(5, @width, @gutter_width); }
+                &.append-6 { .append(6, @width, @gutter_width); }
+                &.append-7 { .append(7, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.nine {
+        &.width-9 {
             .columns(9);
             
-            @column_gutter_width: 5.1%;
-            @column_width: 6.57%;
+            @gutter_width: 5.1%;
+            @width: 6.57%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
-                &.three { .columns(3); }
-                &.four { .columns(4); }
-                &.five { .columns(5); }
-                &.six { .columns(6); }
-                &.seven { .columns(7); }
-                &.eight { .columns(8); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1 { .columns(1, @width, @gutter_width); }
+                &.width-2 { .columns(2, @width, @gutter_width); }
+                &.width-3 { .columns(3, @width, @gutter_width); }
+                &.width-4 { .columns(4, @width, @gutter_width); }
+                &.width-5 { .columns(5, @width, @gutter_width); }
+                &.width-6 { .columns(6, @width, @gutter_width); }
+                &.width-7 { .columns(7, @width, @gutter_width); }
+                &.width-8 { .columns(8, @width, @gutter_width); }
+                &.width-9 { .columns(9, @width, @gutter_width); }
+                
+                &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                &.prepend-6 { .prepend(6, @width, @gutter_width); }
+                &.prepend-7 { .prepend(7, @width, @gutter_width); }
+                &.prepend-8 { .prepend(8, @width, @gutter_width); }
+                
+                &.append-1 { .append(1, @width, @gutter_width); }
+                &.append-2 { .append(2, @width, @gutter_width); }
+                &.append-3 { .append(3, @width, @gutter_width); }
+                &.append-4 { .append(4, @width, @gutter_width); }
+                &.append-5 { .append(5, @width, @gutter_width); }
+                &.append-6 { .append(6, @width, @gutter_width); }
+                &.append-7 { .append(7, @width, @gutter_width); }
+                &.append-8 { .append(8, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.ten {
+        &.width-10 {
             .columns(10);
             
-            @column_gutter_width: 4.61%;
-            @column_width: 5.85%;
+            @gutter_width: 4.61%;
+            @width: 5.85%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
-                &.three { .columns(3); }
-                &.four { .columns(4); }
-                &.five { .columns(5); }
-                &.six { .columns(6); }
-                &.seven { .columns(7); }
-                &.eight { .columns(8); }
-                &.nine { .columns(9); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1   { .columns(1, @width, @gutter_width); }
+                &.width-2   { .columns(2, @width, @gutter_width); }
+                &.width-3   { .columns(3, @width, @gutter_width); }
+                &.width-4   { .columns(4, @width, @gutter_width); }
+                &.width-5   { .columns(5, @width, @gutter_width); }
+                &.width-6   { .columns(6, @width, @gutter_width); }
+                &.width-7   { .columns(7, @width, @gutter_width); }
+                &.width-8   { .columns(8, @width, @gutter_width); }
+                &.width-9   { .columns(9, @width, @gutter_width); }
+                &.width-10 { .columns(10, @width, @gutter_width); }
+                
+                &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                &.prepend-6 { .prepend(6, @width, @gutter_width); }
+                &.prepend-7 { .prepend(7, @width, @gutter_width); }
+                &.prepend-8 { .prepend(8, @width, @gutter_width); }
+                &.prepend-9 { .prepend(9, @width, @gutter_width); }
+                
+                &.append-1 { .append(1, @width, @gutter_width); }
+                &.append-2 { .append(2, @width, @gutter_width); }
+                &.append-3 { .append(3, @width, @gutter_width); }
+                &.append-4 { .append(4, @width, @gutter_width); }
+                &.append-5 { .append(5, @width, @gutter_width); }
+                &.append-6 { .append(6, @width, @gutter_width); }
+                &.append-7 { .append(7, @width, @gutter_width); }
+                &.append-8 { .append(8, @width, @gutter_width); }
+                &.append-9 { .append(9, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.eleven {
+        &.width-11 {
             .columns(11);
             
-            @column_gutter_width: 4.14%;
-            @column_width: 5.32%;
+            @gutter_width: 4.14%;
+            @width: 5.32%;
             
-            .bloc {
-                margin-left: @column_gutter_width;
-                &.one { .columns(1); }
-                &.two { .columns(2); }
-                &.three { .columns(3); }
-                &.four { .columns(4); }
-                &.five { .columns(5); }
-                &.six { .columns(6); }
-                &.seven { .columns(7); }
-                &.eight { .columns(8); }
-                &.nine { .columns(9); }
-                &.ten { .columns(10); }
+            .blk {
+                margin-left: @gutter_width;
+                &.width-1  { .columns(1, @width, @gutter_width); }
+                &.width-2  { .columns(2, @width, @gutter_width); }
+                &.width-3  { .columns(3, @width, @gutter_width); }
+                &.width-4  { .columns(4, @width, @gutter_width); }
+                &.width-5  { .columns(5, @width, @gutter_width); }
+                &.width-6  { .columns(6, @width, @gutter_width); }
+                &.width-7  { .columns(7, @width, @gutter_width); }
+                &.width-8  { .columns(8, @width, @gutter_width); }
+                &.width-9  { .columns(9, @width, @gutter_width); }
+                &.width-10 { .columns(10, @width, @gutter_width); }
+                &.width-11 { .columns(11, @width, @gutter_width); }
+                
+                &.prepend-1  { .prepend(1, @width, @gutter_width); }
+                &.prepend-2  { .prepend(2, @width, @gutter_width); }
+                &.prepend-3  { .prepend(3, @width, @gutter_width); }
+                &.prepend-4  { .prepend(4, @width, @gutter_width); }
+                &.prepend-5  { .prepend(5, @width, @gutter_width); }
+                &.prepend-6  { .prepend(6, @width, @gutter_width); }
+                &.prepend-7  { .prepend(7, @width, @gutter_width); }
+                &.prepend-8  { .prepend(8, @width, @gutter_width); }
+                &.prepend-9  { .prepend(9, @width, @gutter_width); }
+                &.prepend-10 { .prepend(10, @width, @gutter_width); }
+                
+                &.append-1  { .append(1, @width, @gutter_width); }
+                &.append-2  { .append(2, @width, @gutter_width); }
+                &.append-3  { .append(3, @width, @gutter_width); }
+                &.append-4  { .append(4, @width, @gutter_width); }
+                &.append-5  { .append(5, @width, @gutter_width); }
+                &.append-6  { .append(6, @width, @gutter_width); }
+                &.append-7  { .append(7, @width, @gutter_width); }
+                &.append-8  { .append(8, @width, @gutter_width); }
+                &.append-9  { .append(9, @width, @gutter_width); }
+                &.append-10 { .append(10, @width, @gutter_width); }
+                
+                &.left-gutter {
+                    padding-left: @gutter_width;
+                }
+                
+                &.right-gutter {
+                    padding-right: @gutter_width;
+                }
             }
         }
-        &.twelve {  .columns(12); }
+        &.width-12 { .columns(12); }
+        
+        
+        // Prepends & Appends
+        
+        &.prepend-1   { .prepend(1); }
+        &.prepend-2   { .prepend(2); }
+        &.prepend-3   { .prepend(3); }
+        &.prepend-4   { .prepend(4); }
+        &.prepend-5   { .prepend(5); }
+        &.prepend-6   { .prepend(6); }
+        &.prepend-7   { .prepend(7); }
+        &.prepend-8   { .prepend(8); }
+        &.prepend-9   { .prepend(9); }
+        &.prepend-10 { .prepend(10); }
+        &.prepend-11 { .prepend(11); }
+        
+        &.append-1   { .append(1); }
+        &.append-2   { .append(2); }
+        &.append-3   { .append(3); }
+        &.append-4   { .append(4); }
+        &.append-5   { .append(5); }
+        &.append-6   { .append(6); }
+        &.append-7   { .append(7); }
+        &.append-8   { .append(8); }
+        &.append-9   { .append(9); }
+        &.append-10 { .append(10); }
+        &.append-11 { .append(11); }
+        
+        &.left-gutter {
+            padding-left: @column_gutter_width;
+        }
+        
+        &.right-gutter {
+            padding-right: @column_gutter_width;
+        }
+        
+        
+        // Specific styles for elements based on position on columns
+        
+        img, video, object, embed {
+            max-width: 100%;
+        }
     }
 }
