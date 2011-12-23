@@ -1,0 +1,536 @@
+// Gridrr
+// A simple CSS grid system -- a remix of remixed css grid systems.
+//
+// The elastic grid, the width and margin of columns comes from cssgrid.net.
+// The subcolumn support comes from columnal.com, which comes from 960.gs.
+// The classes organization comes from http://webdesignerwall.com/tutorials/the-simpler-css-grid
+// The LESS function of columns widths comes from http://twitter.github.com/bootstrap/.
+
+
+.columns {
+    
+    .blk {
+
+        // Specific styles for elements based on position on columns
+        
+        img, video, object, embed {
+            max-width: 100%;
+        }
+        img {
+            height: auto;
+        }
+        
+    }
+    
+}
+
+@media handheld, only screen and (min-width: 767px) {
+
+    .columns {
+
+        max-width: 1140px;
+        margin: 0 auto;
+        overflow: hidden;
+        padding-left: 20px;
+        padding-right: 20px;
+        
+        @column_width: 4.85%;
+        @column_gutter_width: 3.8%;
+        
+        .columns(@span: 1, @width: @column_width, @gutter_width: @column_gutter_width) {
+            width: (@width * @span) + (@gutter_width * (@span - 1));
+        }
+        
+        .prepend(@span: 1, @width: @column_width, @gutter_width: @column_gutter_width) {
+            margin-left: (@width * @span) + (@gutter_width * (@span+1)) !important;
+            &.first {
+                margin-left: (@width * @span) + (@gutter_width * (@span)) !important;
+            }
+        }
+        
+        .append(@span: 1, @width: @column_width, @gutter_width: @column_gutter_width) {
+            margin-right: (@width * @span) + (@gutter_width * @span);
+        }
+        
+        .blk {
+            float: left;
+            margin-left: @column_gutter_width;
+            position: relative;
+            
+            -ms-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            
+            &.first {
+                clear: left;
+                margin-left: 0 !important;
+            }
+            
+            // Columns
+            
+            &.width-1 {
+                .columns(1);
+            }
+            &.width-2 {
+                @span: 2;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1 { .columns(1, @width, @gutter_width); }
+                    &.width-2 { .columns(2, @width, @gutter_width); }
+                    
+                    &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                    
+                    &.append-1 { .append(1, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-3 {
+                @span: 3;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1 { .columns(1, @width, @gutter_width); }
+                    &.width-2 { .columns(2, @width, @gutter_width); }
+                    &.width-3 { .columns(3, @width, @gutter_width); }
+                    
+                    &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                    &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                    
+                    &.append-1 { .append(1, @width, @gutter_width); }
+                    &.append-2 { .append(2, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-4 {
+                @span: 4;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1 { .columns(1, @width, @gutter_width); }
+                    &.width-2 { .columns(2, @width, @gutter_width); }
+                    &.width-3 { .columns(3, @width, @gutter_width); }
+                    &.width-4 { .columns(4, @width, @gutter_width); }
+                    
+                    &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                    &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                    &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                    
+                    &.append-1 { .append(1, @width, @gutter_width); }
+                    &.append-2 { .append(2, @width, @gutter_width); }
+                    &.append-3 { .append(3, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-5 {
+                @span: 5;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1 { .columns(1, @width, @gutter_width); }
+                    &.width-2 { .columns(2, @width, @gutter_width); }
+                    &.width-3 { .columns(3, @width, @gutter_width); }
+                    &.width-4 { .columns(4, @width, @gutter_width); }
+                    &.width-5 { .columns(5, @width, @gutter_width); }
+                    
+                    &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                    &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                    &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                    &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                    
+                    &.append-1 { .append(1, @width, @gutter_width); }
+                    &.append-2 { .append(2, @width, @gutter_width); }
+                    &.append-3 { .append(3, @width, @gutter_width); }
+                    &.append-4 { .append(4, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-6 {
+                @span: 6;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1 { .columns(1, @width, @gutter_width); }
+                    &.width-2 { .columns(2, @width, @gutter_width); }
+                    &.width-3 { .columns(3, @width, @gutter_width); }
+                    &.width-4 { .columns(4, @width, @gutter_width); }
+                    &.width-5 { .columns(5, @width, @gutter_width); }
+                    &.width-6 { .columns(6, @width, @gutter_width); }
+                    
+                    &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                    &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                    &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                    &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                    &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                    
+                    &.append-1 { .append(1, @width, @gutter_width); }
+                    &.append-2 { .append(2, @width, @gutter_width); }
+                    &.append-3 { .append(3, @width, @gutter_width); }
+                    &.append-4 { .append(4, @width, @gutter_width); }
+                    &.append-5 { .append(5, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-7 {
+                @span: 7;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1 { .columns(1, @width, @gutter_width); }
+                    &.width-2 { .columns(2, @width, @gutter_width); }
+                    &.width-3 { .columns(3, @width, @gutter_width); }
+                    &.width-4 { .columns(4, @width, @gutter_width); }
+                    &.width-5 { .columns(5, @width, @gutter_width); }
+                    &.width-6 { .columns(6, @width, @gutter_width); }
+                    &.width-7 { .columns(7, @width, @gutter_width); }
+                    
+                    &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                    &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                    &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                    &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                    &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                    &.prepend-6 { .prepend(6, @width, @gutter_width); }
+                    
+                    &.append-1 { .append(1, @width, @gutter_width); }
+                    &.append-2 { .append(2, @width, @gutter_width); }
+                    &.append-3 { .append(3, @width, @gutter_width); }
+                    &.append-4 { .append(4, @width, @gutter_width); }
+                    &.append-5 { .append(5, @width, @gutter_width); }
+                    &.append-6 { .append(6, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-8 {
+                @span: 8;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1 { .columns(1, @width, @gutter_width); }
+                    &.width-2 { .columns(2, @width, @gutter_width); }
+                    &.width-3 { .columns(3, @width, @gutter_width); }
+                    &.width-4 { .columns(4, @width, @gutter_width); }
+                    &.width-5 { .columns(5, @width, @gutter_width); }
+                    &.width-6 { .columns(6, @width, @gutter_width); }
+                    &.width-7 { .columns(7, @width, @gutter_width); }
+                    &.width-8 { .columns(8, @width, @gutter_width); }
+                    
+                    &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                    &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                    &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                    &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                    &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                    &.prepend-6 { .prepend(6, @width, @gutter_width); }
+                    &.prepend-7 { .prepend(7, @width, @gutter_width); }
+                    
+                    &.append-1 { .append(1, @width, @gutter_width); }
+                    &.append-2 { .append(2, @width, @gutter_width); }
+                    &.append-3 { .append(3, @width, @gutter_width); }
+                    &.append-4 { .append(4, @width, @gutter_width); }
+                    &.append-5 { .append(5, @width, @gutter_width); }
+                    &.append-6 { .append(6, @width, @gutter_width); }
+                    &.append-7 { .append(7, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-9 {
+                @span: 9;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1 { .columns(1, @width, @gutter_width); }
+                    &.width-2 { .columns(2, @width, @gutter_width); }
+                    &.width-3 { .columns(3, @width, @gutter_width); }
+                    &.width-4 { .columns(4, @width, @gutter_width); }
+                    &.width-5 { .columns(5, @width, @gutter_width); }
+                    &.width-6 { .columns(6, @width, @gutter_width); }
+                    &.width-7 { .columns(7, @width, @gutter_width); }
+                    &.width-8 { .columns(8, @width, @gutter_width); }
+                    &.width-9 { .columns(9, @width, @gutter_width); }
+                    
+                    &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                    &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                    &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                    &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                    &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                    &.prepend-6 { .prepend(6, @width, @gutter_width); }
+                    &.prepend-7 { .prepend(7, @width, @gutter_width); }
+                    &.prepend-8 { .prepend(8, @width, @gutter_width); }
+                    
+                    &.append-1 { .append(1, @width, @gutter_width); }
+                    &.append-2 { .append(2, @width, @gutter_width); }
+                    &.append-3 { .append(3, @width, @gutter_width); }
+                    &.append-4 { .append(4, @width, @gutter_width); }
+                    &.append-5 { .append(5, @width, @gutter_width); }
+                    &.append-6 { .append(6, @width, @gutter_width); }
+                    &.append-7 { .append(7, @width, @gutter_width); }
+                    &.append-8 { .append(8, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-10 {
+                @span: 10;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1   { .columns(1, @width, @gutter_width); }
+                    &.width-2   { .columns(2, @width, @gutter_width); }
+                    &.width-3   { .columns(3, @width, @gutter_width); }
+                    &.width-4   { .columns(4, @width, @gutter_width); }
+                    &.width-5   { .columns(5, @width, @gutter_width); }
+                    &.width-6   { .columns(6, @width, @gutter_width); }
+                    &.width-7   { .columns(7, @width, @gutter_width); }
+                    &.width-8   { .columns(8, @width, @gutter_width); }
+                    &.width-9   { .columns(9, @width, @gutter_width); }
+                    &.width-10 { .columns(10, @width, @gutter_width); }
+                    
+                    &.prepend-1 { .prepend(1, @width, @gutter_width); }
+                    &.prepend-2 { .prepend(2, @width, @gutter_width); }
+                    &.prepend-3 { .prepend(3, @width, @gutter_width); }
+                    &.prepend-4 { .prepend(4, @width, @gutter_width); }
+                    &.prepend-5 { .prepend(5, @width, @gutter_width); }
+                    &.prepend-6 { .prepend(6, @width, @gutter_width); }
+                    &.prepend-7 { .prepend(7, @width, @gutter_width); }
+                    &.prepend-8 { .prepend(8, @width, @gutter_width); }
+                    &.prepend-9 { .prepend(9, @width, @gutter_width); }
+                    
+                    &.append-1 { .append(1, @width, @gutter_width); }
+                    &.append-2 { .append(2, @width, @gutter_width); }
+                    &.append-3 { .append(3, @width, @gutter_width); }
+                    &.append-4 { .append(4, @width, @gutter_width); }
+                    &.append-5 { .append(5, @width, @gutter_width); }
+                    &.append-6 { .append(6, @width, @gutter_width); }
+                    &.append-7 { .append(7, @width, @gutter_width); }
+                    &.append-8 { .append(8, @width, @gutter_width); }
+                    &.append-9 { .append(9, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-11 {
+                @span: 11;
+            
+                .columns(@span);
+                @gutter_width: ((@column_gutter_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                @width: ((@column_width * 100) / ((@span * @column_width) + ((@span - 1) * @column_gutter_width)));
+                
+                .blk {
+                    margin-left: @gutter_width;
+                    &.width-1  { .columns(1, @width, @gutter_width); }
+                    &.width-2  { .columns(2, @width, @gutter_width); }
+                    &.width-3  { .columns(3, @width, @gutter_width); }
+                    &.width-4  { .columns(4, @width, @gutter_width); }
+                    &.width-5  { .columns(5, @width, @gutter_width); }
+                    &.width-6  { .columns(6, @width, @gutter_width); }
+                    &.width-7  { .columns(7, @width, @gutter_width); }
+                    &.width-8  { .columns(8, @width, @gutter_width); }
+                    &.width-9  { .columns(9, @width, @gutter_width); }
+                    &.width-10 { .columns(10, @width, @gutter_width); }
+                    &.width-11 { .columns(11, @width, @gutter_width); }
+                    
+                    &.prepend-1  { .prepend(1, @width, @gutter_width); }
+                    &.prepend-2  { .prepend(2, @width, @gutter_width); }
+                    &.prepend-3  { .prepend(3, @width, @gutter_width); }
+                    &.prepend-4  { .prepend(4, @width, @gutter_width); }
+                    &.prepend-5  { .prepend(5, @width, @gutter_width); }
+                    &.prepend-6  { .prepend(6, @width, @gutter_width); }
+                    &.prepend-7  { .prepend(7, @width, @gutter_width); }
+                    &.prepend-8  { .prepend(8, @width, @gutter_width); }
+                    &.prepend-9  { .prepend(9, @width, @gutter_width); }
+                    &.prepend-10 { .prepend(10, @width, @gutter_width); }
+                    
+                    &.append-1  { .append(1, @width, @gutter_width); }
+                    &.append-2  { .append(2, @width, @gutter_width); }
+                    &.append-3  { .append(3, @width, @gutter_width); }
+                    &.append-4  { .append(4, @width, @gutter_width); }
+                    &.append-5  { .append(5, @width, @gutter_width); }
+                    &.append-6  { .append(6, @width, @gutter_width); }
+                    &.append-7  { .append(7, @width, @gutter_width); }
+                    &.append-8  { .append(8, @width, @gutter_width); }
+                    &.append-9  { .append(9, @width, @gutter_width); }
+                    &.append-10 { .append(10, @width, @gutter_width); }
+                    
+                    &.left-gutter {
+                        padding-left: @gutter_width;
+                    }
+                    
+                    &.right-gutter {
+                        padding-right: @gutter_width;
+                    }
+                }
+            }
+            &.width-12 { .columns(12); }
+            
+            
+            // Prepends & Appends
+            
+            &.prepend-1   { .prepend(1); }
+            &.prepend-2   { .prepend(2); }
+            &.prepend-3   { .prepend(3); }
+            &.prepend-4   { .prepend(4); }
+            &.prepend-5   { .prepend(5); }
+            &.prepend-6   { .prepend(6); }
+            &.prepend-7   { .prepend(7); }
+            &.prepend-8   { .prepend(8); }
+            &.prepend-9   { .prepend(9); }
+            &.prepend-10 { .prepend(10); }
+            &.prepend-11 { .prepend(11); }
+            
+            &.append-1   { .append(1); }
+            &.append-2   { .append(2); }
+            &.append-3   { .append(3); }
+            &.append-4   { .append(4); }
+            &.append-5   { .append(5); }
+            &.append-6   { .append(6); }
+            &.append-7   { .append(7); }
+            &.append-8   { .append(8); }
+            &.append-9   { .append(9); }
+            &.append-10 { .append(10); }
+            &.append-11 { .append(11); }
+            
+            &.left-gutter {
+                padding-left: @column_gutter_width;
+            }
+            
+            &.right-gutter {
+                padding-right: @column_gutter_width;
+            }
+        }
+    }
+
+}
+
+@media handheld, only screen and (max-width: 766px) {
+    
+    body {
+    
+        -webkit-text-size-adjust: none;
+    
+        .columns {
+            width: auto;
+            min-width: 0;
+            margin-left: 20px;
+            margin-right: 20px;
+            
+            .blk {
+                width: 100%;
+                margin: 20px 0;
+                float: none;
+                
+                &:first-child {
+                    margin-top: 0;
+                }
+                
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+            
+            .left-gutter {
+                padding-left: 0;
+            }
+            .right-gutter {
+                padding-right: 0;
+            }
+        }
+    }
+
+}

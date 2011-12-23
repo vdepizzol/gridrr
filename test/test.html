@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>gridrr.less</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../gridrr.css" />
+    <style type="text/css">
+        hr {
+            margin: 10px 0;
+            border: 0;
+            height: 1px;
+            clear: both;
+        }
+        .columns {
+            background: #eeeeec;
+        }
+        .blk {
+            background: #babdb6;
+        }
+        .blk .blk {
+            background: #888a85;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Basic columns</h1>
+    
+    <div class="columns">
+    
+        <div class="blk width-1 first">x</div>
+        <div class="blk width-11">x</div>
+        
+        <hr>
+        
+        <div class="blk width-2 first">x</div>
+        <div class="blk width-10">x</div>
+        
+        <hr>
+        
+        <div class="blk width-3 first">x</div>
+        <div class="blk width-9">x</div>
+        
+        <hr>
+        
+        <div class="blk width-4 first">x</div>
+        <div class="blk width-8">x</div>
+        
+        <hr>
+        
+        <div class="blk width-5 first">x</div>
+        <div class="blk width-7">x</div>
+        
+        <hr>
+        
+        <div class="blk width-6 first">x</div>
+        <div class="blk width-6">x</div>
+        
+        <hr>
+        
+        <div class="blk width-7 first">x</div>
+        <div class="blk width-5">x</div>
+        
+        <hr>
+        
+        <div class="blk width-8 first">x</div>
+        <div class="blk width-4">x</div>
+        
+        <hr>
+        
+        <div class="blk width-9 first">x</div>
+        <div class="blk width-3">x</div>
+        
+        <hr>
+        
+        <div class="blk width-10 first">x</div>
+        <div class="blk width-2">x</div>
+        
+        <hr>
+        
+        <div class="blk width-11 first">x</div>
+        <div class="blk width-1">x</div>
+        
+    </div>
+    
+    <h1>Sub-columns</h1>
+    
+    <div class="columns">
+        
+        <div class="blk width-2 first">
+            <div class="blk width-1 first">x</div>
+            <div class="blk width-1">x</div>
+        </div>
+        
+        <div class="blk width-3">
+            <div class="blk width-2 first">x</div>
+            <div class="blk width-1">x</div>
+        </div>
+        
+        <div class="blk width-4">
+            <div class="blk width-3 first">x</div>
+            <div class="blk width-1">x</div>
+        </div>
+        
+        <div class="blk width-3">
+            <div class="blk width-2 first">x</div>
+            <div class="blk width-1">x</div>
+        </div>
+        
+        <hr>
+        
+        <div class="blk width-6 first">
+            <div class="blk width-3 first">x</div>
+            <div class="blk width-3">x</div>
+        </div>
+        
+        <div class="blk width-4">
+            <div class="blk width-3 first">x</div>
+            <div class="blk width-1">x</div>
+        </div>
+        
+        <div class="blk width-2">
+            <div class="blk width-1 first">x</div>
+            <div class="blk width-1">x</div>
+        </div>
+        
+        <hr>
+        
+        <div class="blk width-9 first">
+            <div class="blk width-5 first">x</div>
+            <div class="blk width-4">x</div>
+        </div>
+        
+        <div class="blk width-3">
+            <div class="blk width-1 first">x</div>
+            <div class="blk width-2">x</div>
+        </div>
+    
+    </div>
+    
+    <h1>Prepend</h1>
+    
+    <div class="columns">
+    
+        <div class="blk width-6 first prepend-6">
+            <div class="blk width-6 first">x</div>
+        </div>
+        
+        <hr />
+        
+        <div class="blk width-6 first">x</div>
+        <div class="blk width-3 prepend-3">x</div>
+    
+    </div>
+    
+    <h1>Append</h1>
+    
+    <div class="columns">
+    
+        <div class="blk width-9 first append-3">x</div>
+        
+        <hr>
+        
+        <div class="blk width-3 first">
+            <div class="blk width-2 first">x</div>
+            <div class="blk width-1">x</div>
+        </div>
+        
+        <hr>
+        
+        <div class="blk width-4 first append-1">x</div>
+        <div class="blk width-7">x</div>
+    
+    </div>
+    
+</body>
+</html>
